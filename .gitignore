@@ -1,0 +1,9 @@
+lib
+*.iml
+*.pyc
+.venv
+.idea
+.project
+.pydevproject
+*.p12
+*.pem

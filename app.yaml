@@ -1,0 +1,33 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+  - url: /(.+\.(jpg|js|ico|txt|css|png))$
+    static_files: static/\1
+    upload: static/(.*)
+
+  - url: .*
+    script: main.app
+    login: required
+    secure: always
+
+libraries:
+  - name: jinja2
+    version: latest
+  - name: pycrypto
+    version: latest
+   
+skip_files:
+  - ^client$
+  - ^(.*/)?#.*#
+  - ^(.*/)?.*~
+  - ^(.*/)?.*\.py[co]
+  - ^(.*/)?.*/RCS/.*
+  - ^(.*/)?\..*
+  - ^(.*/)?.*/grunt/.*
+  - ^(.*/)?.*/test.*
+  - ^tests$
+  - ^.idea$
+  - ^virtual_lib$
+  - ^build$

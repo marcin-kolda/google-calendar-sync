@@ -1,0 +1,29 @@
+calendars:
+  - name:   UK
+    source: en-gb.uk#holiday@group.v.calendar.google.com
+    target: target_calendar@gmail.com
+    ignore_events:
+      - 2nd January (Scotland)
+      - St. David's Day (Wales)
+      - St Patrick's Day (Northern Ireland)
+      - Daylight Saving Time starts
+      - St. George's Day
+      - Liberation Day (regional holiday)
+      - Battle of the Boyne (Northern Ireland)
+      - Summer Bank Holiday (Scotland)
+      - Daylight Saving Time ends
+      - Halloween
+      - Guy Fawkes Day
+      - Remembrance Sunday
+      - St Andrew's Day (Scotland)
+
+  - name:   Poland
+    source: en-gb.polish#holiday@group.v.calendar.google.com
+    target: target_calendar@gmail.com
+    ignore_events:
+      - Valentine's Day
+      - Good Friday
+      - Mother's Day
+      - Father's Day
+      - Christmas Eve
+      - New Year's Eve

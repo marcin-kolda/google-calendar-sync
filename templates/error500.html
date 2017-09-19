@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block logout %}
+{% endblock %}
+
+{% block head %}
+<div class="row">
+    <div class="alert alert-danger" role="alert">
+        <strong>Ooops!</strong>
+        <p>Something went wrong, please refresh the page or try <a href="/">one more time</a>.</p>
+        <p>Error details: {{ error_message }}</p>
+        <p>Request id: {{ request_id }}</p>
+    </div>
+</div>
+{% endblock %}

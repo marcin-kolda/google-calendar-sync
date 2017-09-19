@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block head %}
+
+{% if sync_count %}
+<div class="alert alert-success" role="alert">
+    Synchronized {{ sync_count }} events
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+    This page shows difference between Google Holidays calendars and Bank Holiday calendars in each country:
+    <ul>
+        {% for key, value in calendars.iteritems() %}
+        <li><a href="#{{ key }}">{{ key }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% for key, value in calendars.iteritems() %}
+<a name="{{ key }}"></a>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="panel-title text-center">{{ key }}</h1>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td class="col-sm-1">State</td>
+                <td class="col-sm-2">Date</td>
+                <td>Name</td>
+                <td class="col-sm-2"><a href="{{ value['source_link'] }}" target="_blank">Google calendar</a></td>
+                <td class="col-sm-2"><a href="{{ value['target_link'] }}" target="_blank">Your calendar</a></td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, value in value['events'].iteritems() %}
+            <tr class="{{ value['class'] }}">
+                <td class="text-center"><span data-toggle="tooltip" title="{{ value['glyphicon_tooltip'] }}"
+                          class="glyphicon {{ value['glyphicon'] }}" aria-hidden="true"></span></td>
+                <td>{{ value['date'] }}</td>
+                <td>
+                    {{ value['summary'] }}
+                    {% if 'description' in value %}
+                     <span data-toggle="tooltip" title="{{ value['description'] }}"
+                           class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if 'source_event' in value %}
+                    <a href="{{ value['source_event']['htmlLink'] }}" target="_blank">
+                        <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                    </a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if 'target_event' in value %}
+                    <a href="{{ value['target_event']['htmlLink'] }}" target="_blank">
+                        <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

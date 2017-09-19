@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <title>{% block title %}Bank Holiday Calendars{% endblock %}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+</head>
+<body>
+<div class="container col-sm-6 col-sm-offset-3">
+    <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Bank Holiday Calendars</a>
+                </div>
+                {% block logout %}
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><p class="navbar-text">Hi {{ email }}</p></li>
+                        <li><a href="{{ logout_url }}">Logout</a></li>
+                    </ul>
+                </div>
+                {% endblock %}
+            </div>
+        </nav>
+    </div>
+    {% block head %}
+    {% endblock %}
+    <div class="row">
+        <hr>
+        <header class="navbar">
+            <footer class="bs-docs-footer">
+                <div class="pull-right">
+                    {% block footer_right %}{% endblock %}
+                </div>
+            </footer>
+        </header>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+{% block javascript %}
+{% endblock %}
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+</body>
+</html>
