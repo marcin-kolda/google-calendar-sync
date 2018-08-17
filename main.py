@@ -7,7 +7,7 @@ from flask import Flask
 from flask import request, render_template, session, redirect
 from google.appengine.api import users
 from oauth2client.appengine import AppAssertionCredentials
-from oauth2client.contrib.flask_util import UserOAuth2
+from oauth2client.flask_util import UserOAuth2
 
 import settings
 from myapp.calendar_sync import *
